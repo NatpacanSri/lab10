@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt1"
+        android:text="Student List"
+        android:textColor="#0b0b0b"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddStudent"
+        android:text="Add Student"
+        android:textSize="20sp"
+        android:background="#0fea7f"
+        android:textColor="#ffff"
+        android:textAllCaps="false"
+        android:onClick="addStudentDialog"
+        android:padding="7dp"
+        android:layout_alignParentRight="true"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"
+        android:scrollbars="vertical"
+        android:layout_below="@id/btnAddStudent"
+        />
+
+</RelativeLayout>
