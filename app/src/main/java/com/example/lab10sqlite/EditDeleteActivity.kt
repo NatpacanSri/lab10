@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.lab10sqlite.databinding.ActivityEditDeleteBinding
 
 class EditDeleteActivity : AppCompatActivity() {
@@ -52,5 +53,24 @@ class EditDeleteActivity : AppCompatActivity() {
 
     }
 
-    fun deleteStudent(v:View){}
+    fun deleteStudent(v:View){
+        val myBuilder = AlertDialog.Builder(this)
+        myBuilder.apply {
+            setTitle("Warning")
+            setMessage("Do you want to delete the student?")
+            setNegativeButton("Yes"){_,_->
+                val id = bindingEdit.edtId.text.toString()
+                Toast.makeText(applicationContext,id.toString()+" Deleted",Toast.LENGTH_SHORT).show()
+                val result = dbHandler.deleteStudent(id)
+                if (result > -1){
+                    Toast.makeText(applicationContext,"Delete successfully",Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(applicationContext,"Delete Failure",Toast.LENGTH_SHORT).show()
+                }
+                finish()
+            }
+            setPositiveButton("No"){dialog,_->dialog.cancel()}
+            show()
+        }
+    }
 }
